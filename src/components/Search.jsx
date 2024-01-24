@@ -1,15 +1,16 @@
 //hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 //packages
 import { TextField, InputAdornment } from '@mui/material';
 //icons
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = (props) => {
-    const [city, setCity] = useState('');
+    const [city, setCity] = useState(localStorage.getItem('city') || '');
     const BASEURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=TZZYVDVTTVJQVUTN4ZG4BBA9H&contentType=json`;
 
     const searchBtnHandler = () => {
+        localStorage.setItem('city', city);
         fetch(BASEURL)
             .then((res) => res.json())
             .then((data) => {
@@ -17,6 +18,10 @@ const Search = (props) => {
             })
             .catch((err) => console.log(err));
     };
+
+    useEffect(() => {
+        searchBtnHandler();
+    }, []);
 
     return (
         <TextField

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Search from './Search';
+import WeatherCard from './WeatherCard';
 
 const HomePage = () => {
     const [data, setData] = useState(null);
@@ -11,7 +12,8 @@ const HomePage = () => {
     return (
         <>
             <Search getData={getData} />
-            {data && console.log(data.currentConditions.conditions)}
+            {data && console.log(data)}
+            {data && <WeatherCard data={data} />}
         </>
     );
 };
