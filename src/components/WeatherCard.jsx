@@ -1,7 +1,7 @@
+import PlaceIcon from '@mui/icons-material/Place';
 import { Grid, Tooltip, Typography } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import { useEffect, useState } from 'react';
-import moon from '../assets/moon.png';
-import sun from '../assets/sun.png';
 import {
     cloudy,
     cloudyDay,
@@ -12,6 +12,7 @@ import {
     snow,
     thunder,
 } from '../svgs/index';
+
 const WeatherCard = (props) => {
     const [humidity, setHumidity] = useState('');
     const [icon, setIcon] = useState('');
@@ -78,6 +79,11 @@ const WeatherCard = (props) => {
                     <Typography fontSize={16}>
                         {props.data.resolvedAddress}
                     </Typography>
+                    <Tooltip title={'Change Location'}>
+                        <IconButton onClick={props.changeCityBtnHandler}>
+                            <PlaceIcon />
+                        </IconButton>
+                    </Tooltip>
                 </Grid>
             </Grid>
             <Grid container my={2} sx={centerStyle}>
@@ -103,40 +109,6 @@ const WeatherCard = (props) => {
                     </Typography>
                 </Grid>
             </Grid>
-            <Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Grid item xs={8}>
-                    <Grid container sx={containerStyle}>
-                        <Grid
-                            item
-                            xs={6}
-                            sx={{ borderRight: '2px solid black' }}
-                        >
-                            <Tooltip
-                                title={'Sunrise Time'}
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                }}
-                            >
-                                {props.data.currentConditions.sunrise}
-                                <img src={sun} alt="sunrise" />
-                            </Tooltip>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Tooltip
-                                title={'Sunset Time'}
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                }}
-                            >
-                                {props.data.currentConditions.sunset}
-                                <img src={moon} alt="sunset" />
-                            </Tooltip>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
         </>
     );
 };
@@ -145,13 +117,6 @@ const centerStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-};
-
-const containerStyle = {
-    backgroundColor: '#F9EFDB',
-    borderRadius: 5,
-    padding: 1,
-    boxShadow: 4,
 };
 
 export default WeatherCard;
