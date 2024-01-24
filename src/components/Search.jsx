@@ -25,7 +25,7 @@ const Search = (props) => {
 
     return (
         <TextField
-            placeholder="Type your city"
+            placeholder="Type your location"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={(e) => {

@@ -34,7 +34,9 @@ const HomePage = () => {
 
     return (
         <>
-            {!city && <Search getData={getData} />}
+            <div style={{ position: 'absolute', top: '100px' }}>
+                {!city && <Search getData={getData} />}
+            </div>
             {data && console.log(data)}
             {data && (
                 <WeatherCard
@@ -45,16 +47,6 @@ const HomePage = () => {
             {data && <NextWeathers data={data} />}
         </>
     );
-};
-
-const changeCityStyles = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    ':hover': {
-        cursor: 'pointer',
-        textDecoration: 'underline',
-    },
 };
 
 export default HomePage;
