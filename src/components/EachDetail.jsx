@@ -4,18 +4,20 @@ import { useSpring, animated } from '@react-spring/web';
 const EachDetail = (props) => {
     const springler = (time) => {
         return useSpring({
-            opacity: isClicked ? 0 : 1,
+            opacity: props.isClicked ? 0 : 1,
             delay: time,
         });
     };
     return (
         <Tooltip title={props.text} placement="left">
-            <div
+            <animated.div
                 style={{
+                    ...springler(props.delay),
                     display: 'flex',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                     marginLeft: 75,
+                    marginTop: 12,
                 }}
             >
                 <img
@@ -26,7 +28,7 @@ const EachDetail = (props) => {
                 <p style={{ marginLeft: 20 }}>
                     {props.value} {props.unit}
                 </p>
-            </div>
+            </animated.div>
         </Tooltip>
     );
 };

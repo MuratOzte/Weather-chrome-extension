@@ -57,6 +57,10 @@ const HomePage = () => {
         opacity: isClicked ? 0 : 1,
         delay: 600,
     });
+    const animatedButton = useSpring({
+        opacity: isClicked ? 0 : 1,
+        delay: 1000,
+    });
 
     return (
         <>
@@ -91,6 +95,7 @@ const HomePage = () => {
                     }}
                     style={{
                         position: 'absolute',
+                        ...animatedButton,
                         top: 90,
                         right: -20,
                         fontSize: '40px',
@@ -106,6 +111,7 @@ const HomePage = () => {
             <animated.div
                 style={{
                     ...secondSection,
+                    scale: 1,
                 }}
             >
                 <Details data={data} isClicked={isClicked} />
