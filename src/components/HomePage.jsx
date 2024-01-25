@@ -88,24 +88,26 @@ const HomePage = () => {
                 <animated.div style={{ ...nextWeatherSection }}>
                     {data && <NextWeathers data={data} />}
                 </animated.div>
-                <animated.button
-                    onClick={() => {
-                        setIsClicked((e) => (e = !e));
-                    }}
-                    style={{
-                        position: 'absolute',
-                        ...animatedButton,
-                        top: 90,
-                        right: -20,
-                        fontSize: '40px',
-                        background: 'none',
-                        border: 'none',
-                        color: 'black',
-                        cursor: 'pointer',
-                    }}
-                >
-                    {'\u276D'}
-                </animated.button>
+                {city && (
+                    <animated.button
+                        onClick={() => {
+                            setIsClicked((e) => (e = !e));
+                        }}
+                        style={{
+                            position: 'absolute',
+                            ...animatedButton,
+                            top: 90,
+                            right: -20,
+                            fontSize: '40px',
+                            background: 'none',
+                            border: 'none',
+                            color: 'black',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        {'\u276D'}
+                    </animated.button>
+                )}
             </animated.div>
             <animated.div
                 style={{
@@ -114,24 +116,26 @@ const HomePage = () => {
                 }}
             >
                 <Details data={data} isClicked={isClicked} />
-                <animated.button
-                    onClick={() => {
-                        setIsClicked((e) => (e = !e));
-                    }}
-                    style={{
-                        ...buttonSection,
-                        position: 'absolute',
-                        fontSize: '40px',
-                        top: 125,
-                        left: 30,
-                        background: 'none',
-                        border: 'none',
-                        color: 'black',
-                        cursor: 'pointer',
-                    }}
-                >
-                    {'\u276C'}
-                </animated.button>
+                {city && (
+                    <animated.button
+                        onClick={() => {
+                            setIsClicked((e) => (e = !e));
+                        }}
+                        style={{
+                            ...buttonSection,
+                            position: 'absolute',
+                            fontSize: '40px',
+                            top: 125,
+                            left: 30,
+                            background: 'none',
+                            border: 'none',
+                            color: 'black',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        {'\u276C'}
+                    </animated.button>
+                )}
             </animated.div>
         </>
     );
