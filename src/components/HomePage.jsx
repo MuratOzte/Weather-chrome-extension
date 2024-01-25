@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
+import NextWeathers from './NextWeathers';
 import Search from './Search';
 import WeatherCard from './WeatherCard';
-import PlaceIcon from '@mui/icons-material/Place';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import NextWeathers from './NextWeathers';
+import { animated, useSpring } from '@react-spring/web';
 
 const HomePage = () => {
     const [data, setData] = useState(null);
@@ -32,19 +30,67 @@ const HomePage = () => {
         setData(null);
     };
 
+    const [isClicked, setIsClicked] = useState(false);
+
+    //animations
+    const firstSection = useSpring({
+        x: isClicked ? -500 : 0,
+    });
+
+    const secondSection = useSpring({
+        x: isClicked ? 0 : 500,
+        delay: 100,
+    });
+
     return (
         <>
             <div style={{ position: 'absolute', top: '100px' }}>
                 {!city && <Search getData={getData} />}
             </div>
-            {data && console.log(data)}
-            {data && (
-                <WeatherCard
-                    data={data}
-                    changeCityBtnHandler={changeCityBtnHandler}
-                />
-            )}
-            {data && <NextWeathers data={data} />}
+            <animated.div
+                style={{
+                    ...firstSection,
+                    position: 'fixed',
+                    maxWidth: 250,
+                    display: 'flex',
+                    flexDirection: 'column',
+                }}
+            >
+                {data && console.log(data)}
+                {data && (
+                    <WeatherCard
+                        data={data}
+                        changeCityBtnHandler={changeCityBtnHandler}
+                    />
+                )}
+                {data && <NextWeathers data={data} />}
+                <button
+                    onClick={() => {
+                        setIsClicked((e) => (e = !e));
+                    }}
+                >
+                    Deneme Butonu
+                </button>
+            </animated.div>
+            <animated.div
+                style={{ ...secondSection, display: 'fixed', maxWidth: 360 }}
+            >
+                {data && console.log(data)}
+                {data && (
+                    <WeatherCard
+                        data={data}
+                        changeCityBtnHandler={changeCityBtnHandler}
+                    />
+                )}
+                {data && <NextWeathers data={data} />}
+                <button
+                    onClick={() => {
+                        setIsClicked((e) => (e = !e));
+                    }}
+                >
+                    Deneme Butonu
+                </button>
+            </animated.div>
         </>
     );
 };

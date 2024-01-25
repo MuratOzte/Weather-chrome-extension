@@ -75,7 +75,15 @@ const WeatherCard = (props) => {
                     )}
                     {icon === 'thunder' && <img src={thunder} alt="thunder" />}
                 </Grid>
-                <Grid item xs={8} sx={{ ...centerStyle, position: 'relative' }}>
+                <Grid
+                    item
+                    xs={8}
+                    sx={{
+                        ...centerStyle,
+                        position: 'relative',
+                        justifyContent: 'flex-end',
+                    }}
+                >
                     <Typography fontSize={16}>
                         {props.data.resolvedAddress}
                     </Typography>

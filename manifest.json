@@ -1,0 +1,10 @@
+{
+    "name": "Crescent",
+    "description": "A 1v1 map with a crescent moon shape.  (Recommended 1v1)",
+    "creator": "WPMarshall",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "index.html"
+    }
+}
