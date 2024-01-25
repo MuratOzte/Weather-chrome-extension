@@ -3,6 +3,7 @@ import NextWeathers from './NextWeathers';
 import Search from './Search';
 import WeatherCard from './WeatherCard';
 import { animated, useSpring } from '@react-spring/web';
+import Details from './Details';
 
 const HomePage = () => {
     const [data, setData] = useState(null);
@@ -73,16 +74,11 @@ const HomePage = () => {
                 </button>
             </animated.div>
             <animated.div
-                style={{ ...secondSection, display: 'fixed', maxWidth: 360 }}
+                style={{
+                    ...secondSection,
+                }}
             >
-                {data && console.log(data)}
-                {data && (
-                    <WeatherCard
-                        data={data}
-                        changeCityBtnHandler={changeCityBtnHandler}
-                    />
-                )}
-                {data && <NextWeathers data={data} />}
+                <Details data={data} />
                 <button
                     onClick={() => {
                         setIsClicked((e) => (e = !e));
