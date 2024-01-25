@@ -43,6 +43,21 @@ const HomePage = () => {
         delay: 100,
     });
 
+    const buttonSection = useSpring({
+        opacity: isClicked ? 1 : 0,
+        delay: 1000,
+    });
+
+    const weatherCardSection = useSpring({
+        opacity: isClicked ? 0 : 1,
+        delay: 400,
+    });
+
+    const nextWeatherSection = useSpring({
+        opacity: isClicked ? 0 : 1,
+        delay: 600,
+    });
+
     return (
         <>
             <div style={{ position: 'absolute', top: '100px' }}>
@@ -55,37 +70,63 @@ const HomePage = () => {
                     maxWidth: 250,
                     display: 'flex',
                     flexDirection: 'column',
+                    gap: 10,
                 }}
             >
                 {data && console.log(data)}
-                {data && (
-                    <WeatherCard
-                        data={data}
-                        changeCityBtnHandler={changeCityBtnHandler}
-                    />
-                )}
-                {data && <NextWeathers data={data} />}
-                <button
+                <animated.div style={{ ...weatherCardSection }}>
+                    {data && (
+                        <WeatherCard
+                            data={data}
+                            changeCityBtnHandler={changeCityBtnHandler}
+                        />
+                    )}
+                </animated.div>
+                <animated.div style={{ ...nextWeatherSection }}>
+                    {data && <NextWeathers data={data} />}
+                </animated.div>
+                <animated.button
                     onClick={() => {
                         setIsClicked((e) => (e = !e));
                     }}
+                    style={{
+                        position: 'absolute',
+                        top: 90,
+                        right: -20,
+                        fontSize: '40px',
+                        background: 'none',
+                        border: 'none',
+                        color: 'black',
+                        cursor: 'pointer',
+                    }}
                 >
-                    Deneme Butonu
-                </button>
+                    {'\u276D'}
+                </animated.button>
             </animated.div>
             <animated.div
                 style={{
                     ...secondSection,
                 }}
             >
-                <Details data={data} />
-                <button
+                <Details data={data} isClicked={isClicked} />
+                <animated.button
                     onClick={() => {
                         setIsClicked((e) => (e = !e));
                     }}
+                    style={{
+                        ...buttonSection,
+                        position: 'absolute',
+                        fontSize: '40px',
+                        top: 125,
+                        left: 30,
+                        background: 'none',
+                        border: 'none',
+                        color: 'black',
+                        cursor: 'pointer',
+                    }}
                 >
-                    Deneme Butonu
-                </button>
+                    {'\u276C'}
+                </animated.button>
             </animated.div>
         </>
     );
