@@ -87,7 +87,7 @@ const Details = (props) => {
                     </p>
                 </animated.div>
             </Tooltip>
-            <Tooltip title={Data[1].text} placement="left">
+            <Tooltip title={Data[1].title} placement="left">
                 <animated.div
                     style={{
                         ...section2,
@@ -108,7 +108,7 @@ const Details = (props) => {
                     </p>
                 </animated.div>
             </Tooltip>
-            <Tooltip title={Data[2].text} placement="left">
+            <Tooltip title={Data[2].title} placement="left">
                 <animated.div
                     style={{
                         ...section3,
@@ -129,7 +129,7 @@ const Details = (props) => {
                     </p>
                 </animated.div>
             </Tooltip>
-            <Tooltip title={Data[3].text} placement="left">
+            <Tooltip title={Data[3].title} placement="left">
                 <animated.div
                     style={{
                         ...section4,
@@ -150,7 +150,7 @@ const Details = (props) => {
                     </p>
                 </animated.div>
             </Tooltip>
-            <Tooltip title={Data[2].text} placement="left">
+            <Tooltip title={Data[4].title} placement="left">
                 <animated.div
                     style={{
                         ...section5,
