@@ -19,7 +19,6 @@ const WeatherCard = (props) => {
 
     useEffect(() => {
         if (props.data.currentConditions.humidity) {
-            console.log(props.data.currentConditions.humidity);
             if (props.data.currentConditions.humidity < 30) {
                 setHumidity('Very Dry');
             } else if (props.data.currentConditions.humidity < 50) {

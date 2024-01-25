@@ -77,7 +77,6 @@ const HomePage = () => {
                     gap: 10,
                 }}
             >
-                {data && console.log(data)}
                 <animated.div style={{ ...weatherCardSection }}>
                     {data && (
                         <WeatherCard
