@@ -1,8 +1,4 @@
-# React + Vite
+The Weather Chrome Extension is a simple and lightweight extension that allows users to quickly check the weather forecast directly from their Chrome browser. With just a click, users can access current weather conditions and forecasts for their location.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#Chrome Extension Link
+https://chromewebstore.google.com/detail/weather-app/jmgkmgdbipcpdmohllejnchgpoicelam?hl=tr&utm_source=ext_sidebar
