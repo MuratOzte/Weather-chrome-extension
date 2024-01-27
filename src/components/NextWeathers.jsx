@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Tooltip } from '@mui/material';
 import {
     cloudy,
     rain,
@@ -12,20 +12,51 @@ import {
 
 const NextWeathers = (props) => {
     const avarageTemp = (i) => {
-        return (
-            (props.data.days[i].tempmax + props.data.days[i].tempmin) /
-            2
-        ).toFixed(2);
+        return {
+            tempmin: props.data.days[i].tempmin.toFixed(2),
+            tempmax: props.data.days[i].tempmax.toFixed(2),
+        };
     };
 
     const date = (i) => {
         return (
-            <>
+            <div style={{ borderBottom: '1px solid black', marginBottom: 4 }}>
                 {props.data.days[i].datetime.split('-')[2] +
                     '/' +
                     props.data.days[i].datetime.split('-')[1]}
                 <br />
-            </>
+            </div>
+        );
+    };
+
+    const sunIcon = (left) => {
+        return (
+            <Tooltip title="Max Temperature" placement="left">
+                <img
+                    src={day}
+                    style={{
+                        position: 'absolute',
+                        top: 166,
+                        left: left,
+                        width: 40,
+                    }}
+                />
+            </Tooltip>
+        );
+    };
+    const moonIcon = (left) => {
+        return (
+            <Tooltip title="Min Temperature" placement="left">
+                <img
+                    src={night}
+                    style={{
+                        position: 'absolute',
+                        top: 185,
+                        left: left,
+                        width: 38,
+                    }}
+                />
+            </Tooltip>
         );
     };
 
@@ -66,49 +97,40 @@ const NextWeathers = (props) => {
                 boxShadow: 2,
                 backgroundColor: '#F9EFDB',
                 padding: 1,
-                borderRadius:'5px',
+                borderRadius: '5px',
                 justifyContent: 'space-around',
             }}
         >
             <Grid item xs={2} sx={itemStyles}>
                 {date(1)}
-                {avarageTemp(1) + '°C'}
+                {sunIcon(0)}
+                {avarageTemp(1).tempmax + '°C'}
+                <br />
+                {moonIcon(0)}
+                {avarageTemp(1).tempmin + '°C'}
                 {getIcon(1)}
             </Grid>
             <Grid item xs={2} sx={itemStyles}>
                 {date(2)}
-                {avarageTemp(2) + '°C'}
+                {sunIcon(75)}
+                {avarageTemp(2).tempmax + '°C'}
+                <br />
+                {moonIcon(75)}
+                {avarageTemp(2).tempmin + '°C'}
+
                 {getIcon(2)}
             </Grid>
             <Grid item xs={2} sx={itemStyles}>
                 {date(3)}
-                {avarageTemp(3) + '°C'}
+                {sunIcon(155)}
+                {avarageTemp(3).tempmax + '°C'}
+                <br />
+                {moonIcon(155)}
+                {avarageTemp(3).tempmin + '°C'}
                 {getIcon(3)}
             </Grid>
-            <Grid item xs={2} sx={itemStyles}>
-                {date(4)}
-                {avarageTemp(4) + '°C'}
-                {getIcon(4)}
-            </Grid>
-            {/* <Grid
-                item
-                xs={2}
-                sx={{ borderLeft: '2px solid black', pl: 0.5, ...itemStyles }}
-            >
-                {date(5)}
-                {avarageTemp(5) + '°C'}
-                {getIcon(5)}
-            </Grid> */}
         </Grid>
     );
-};
-
-const cardStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-    textAlign: 'center',
-    flexDirection: 'column',
-    marginx: 1,
 };
 
 const itemStyles = {
